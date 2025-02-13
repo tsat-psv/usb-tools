@@ -120,7 +120,7 @@ prepare_device() {
   _log "Prepare device ´$1´"
   local device="$1"
   _log "Create fat32 partition..."
-  execute "echo -e 'o\nn\np\n1\n\n+7G\na\n1\nw' | fdisk ${device}"
+  execute "echo -e 'o\nn\np\n1\n\n\na\n1\nw' | fdisk ${device}"
   execute "mkfs.vfat ${device}1"
   execute "dd conv=notrunc bs=440 count=1 if=\"$mbr_bin_path\" of=${device}"
   execute "syslinux -i ${device}1"
